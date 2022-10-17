@@ -15,33 +15,29 @@ if (isset($_POST['submit'])) {
 }
 
 
-    $cost1 = 3.50;
-    $cost2 = 4.00;
-    $cost3 = 5.20;
-    $cost4 = 6.50;
 
     if($number <= 50) {
-        $b1 = $number * $cost1;
+        $b1 = $number * 3.50;
     }
     else if($number > 50 && $number <= 100) {
-        $temp = 50 * $cost1;
+        $temp = 50 * 3.50;
         $rem = $number - 50;
-        $b1 = $temp + ($rem * $cost2);
+        $b1 = $temp + ($rem * 4.00);
     }
     else if($units > 100 && $units <= 200) {
-        $temp = (50 * 3.5) + (100 * $cost2);
+        $temp = (50 * 3.5) + (100 * 4.00);
         $rem = $number - 150;
-        $b1 = $temp + ($rem * $cost3);
+        $b1 = $temp + ($rem * 5.20);
     }
     else {
-        $temp = (50 * 3.5) + (100 * $cost2) + (100 * $cost3);
+        $temp = (50 * 3.5) + (100 * $cost2) + (100 * 5.20);
         $rem = $number - 250;
-        $b1 = $temp + ($rem * $cost4);
+        $b1 = $temp + ($rem * 6.50);
     }
 ?>
 <body>
 		<form action="" method="post">
-            	<input type="number" name="number" id="units" placeholder="enter unit" />
+            	<input type="number" name="number" placeholder="enter unit" />
             	<input type="submit" name="submit" id="submit" value="Submit" />
 		</form>
 		<div>
