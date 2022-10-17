@@ -9,42 +9,44 @@
 <body> 
     <!-- taking values from form -->
     <?php
-    $number = $_POST["number"];
-   
-    if($number>1 && $number<50)
-    {
-      $result =  $number * 3.50;
-    
-    }
-    else if($number>50 && $number <150)
-    {
-        $result = $number * 4.00;
-  
-    }
-    elseif($number>150 && $number<250)
-    {
-        $result = $number * 5.20;
- 
-    }
-    elseif($number>250)
-    {
-        $result = $number * 6.50;
+$result_str = $result = '';
+if (isset($_POST['submit'])) {
+    $number = $_POST['number'];
+}
 
+
+    $cost1 = 3.50;
+    $cost2 = 4.00;
+    $cost3 = 5.20;
+    $cost4 = 6.50;
+
+    if($number <= 50) {
+        $b1 = $number * $cost1;
     }
-    ?>
-    <!-- form start -->
-    <form action="" method="post">
-        <p>
-        <label for ="units">units</label>
-        <input type="number" name="number" value="<?php echo $number;?>">
-</p>
-<input type="submit" name="submit">
-</form>
-<!-- form end -->
-<br>
- <div>
-    <?php echo "<h3>Amount:" .$result;"</h3>"?>
-</div>
+    else if($number > 50 && $number <= 100) {
+        $temp = 50 * $cost1;
+        $rem = $number - 50;
+        $b1 = $temp + ($rem * $cost2);
+    }
+    else if($units > 100 && $units <= 200) {
+        $temp = (50 * 3.5) + (100 * $cost2);
+        $rem = $number - 150;
+        $b1 = $temp + ($rem * $cost3);
+    }
+    else {
+        $temp = (50 * 3.5) + (100 * $cost2) + (100 * $cost3);
+        $rem = $number - 250;
+        $b1 = $temp + ($rem * $cost4);
+    }
+?>
+<body>
+		<form action="" method="post">
+            	<input type="number" name="number" id="units" placeholder="enter unit" />
+            	<input type="submit" name="submit" id="submit" value="Submit" />
+		</form>
+		<div>
+		    <?php echo '' . $totalresult . '' . $b1; ?>
+		</div>
 
 </body>
 </html>
